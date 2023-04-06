@@ -1,0 +1,34 @@
+body{
+    padding: 3px;
+}
+.header-container{
+    height: 40px;
+    width: 100%;
+    margin-bottom: 3px;
+  
+    padding: 8px;
+    display: flex;
+    justify-content: flex-end;
+    padding-right: 13px;
+    font-weight: bold;
+    font-size: 13px;
+}
+.logout-btn{
+    font-weight: bold;
+    font-family: 'Courier New', Courier, monospace;
+}
+.logOut-text{
+    display: inline;
+    letter-spacing: 5px;
+}
+.user-img{
+    height: 30px;
+    width: 30px;
+    margin: 3px;
+    cursor: pointer;
+}
+.user-name{
+    margin-top: 8px;
+    font-size: 17px;
+    font-family: monospace;
+}

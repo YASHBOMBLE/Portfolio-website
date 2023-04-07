@@ -5,7 +5,9 @@ import { currentUser } from './../../util/currentUser.js';
 import "./Signup.css"
 
 function Signup() {
-  const [name, setName] = useState('')
+  const [fname, setFname] = useState('')
+  const [lname, setLname] = useState('')
+
   const [email, setEmail] = useState('')
   const [phone, setPhone] = useState('')
   const [password, setPassword] = useState('')
@@ -19,7 +21,8 @@ function Signup() {
   async function signupUser() {
    
     const response = await axios.post('/signup', {
-      name: name,
+      fname: fname,
+      lname: lname,
       email: email,
       phone: phone,
       password: password,
@@ -42,7 +45,8 @@ function Signup() {
         icon: "error",
         button: "Try Again!",
       });
-      setName('')
+      setFname('')
+      setLname('')
       setEmail('')
       setPhone('')
       setPassword('')
@@ -81,9 +85,14 @@ function Signup() {
             <hr />
             <form>
               <div>
-                <label htmlFor='name'>Full Name: </label>
-                <input type='text' id='name' placeholder='Enter Name' className='user-input'
-                  value={name} onChange={(e) => setName(e.target.value)} />
+                <label htmlFor='name'>First Name: </label>
+                <input type='text' id='name' placeholder='Enter First Name' className='user-input'
+                  value={fname} onChange={(e) => setFname(e.target.value)} />
+              </div>
+              <div>
+                <label htmlFor='name'>Last Name: </label>
+                <input type='text' id='name' placeholder='Enter Last Name' className='user-input'
+                  value={lname} onChange={(e) => setLname(e.target.value)} />
               </div>
 
               <div>

@@ -1,10 +1,11 @@
-import {Schema, model} from "mongoose"
+import { Schema, model } from "mongoose";
 
 const pdfSchema = new Schema({
-    subject: String,
-    link: String,
-})
+  subject : String,
+  link : String,
+  date : String
+},{ timestamps: true})
 
-const Pdf = model("Pdf", pdfSchema)
+const Pdf = model('Pdf', pdfSchema);
 
-export default Pdf
+export default Pdf;

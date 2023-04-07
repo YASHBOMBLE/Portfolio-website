@@ -5,7 +5,6 @@ body{
     height: 40px;
     width: 100%;
     margin-bottom: 3px;
-  
     padding: 8px;
     display: flex;
     justify-content: flex-end;
@@ -13,9 +12,29 @@ body{
     font-weight: bold;
     font-size: 13px;
 }
+
 .logout-btn{
     font-weight: bold;
     font-family: 'Courier New', Courier, monospace;
+}
+.dash-main-container{
+    padding: 8px;
+    box-shadow: 0px 0px 4px #808080;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 10px;
+    letter-spacing: 8px;
+    background: rgb(34,193,195);
+    background: linear-gradient(0deg, rgba(34,193,195,1) 0%, rgba(111,102,191,1) 31%, rgba(253,187,45,1) 100%); 
+}
+.dash-container{
+    font-size: 33px;
+    font-weight: bold;
+}
+.dash-container:hover{
+    color: aquamarine;
+    transition: 1s;
+    cursor: pointer;
 }
 .logOut-text{
     display: inline;
@@ -31,4 +50,83 @@ body{
     margin-top: 8px;
     font-size: 17px;
     font-family: monospace;
+    letter-spacing: 4px;
+}
+.search{
+    box-shadow: 0px 0px 2px 0.5px #808080;
+    height: 36px;
+    border: none;
+    border-radius: 10px;
+    margin-right: 6px;
+}
+.input-search{
+    height: 38px;
+    width: 250px;
+    border-left: none;
+    border-right: none;
+    border-top: none;
+    font-size: 16px;
+    font-weight: bold;
+    padding-left: 6px;
+   
+    
+}
+.input-search:focus{
+    outline: none;
+}
+.main-search-container{
+    display: flex;
+    justify-content: center;
+}
+.text{
+    display: flex;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 19px;
+    word-spacing: 5px;
+    letter-spacing: 4px;
+}
+
+body.active-modal {
+    overflow-y: hidden;
+}
+
+.btn-modal {
+    padding: 10px 20px;
+    display: block;
+    margin: 100px auto 0;
+    font-size: 18px;
+}
+
+.modal, .overlay {
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    position: fixed;
+}
+
+.overlay {
+    background: rgba(49,49,49,0.8);
+}
+.modal-content {
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    line-height: 1.4;
+    background: #f1f1f1;
+    padding: 14px 28px;
+    border-radius: 3px;
+    max-width: 600px;
+    min-width: 300px;
+}
+
+.close-modal {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    padding: 5px 7px;
 }

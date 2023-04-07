@@ -9,6 +9,7 @@ import path from 'path';
 const __dirname = path.resolve();
 import User from './models/User.js';
 import Pdf from './models/Pdf.js';
+import PdfLink from './models/Pdf.js';
 
 
 
@@ -27,10 +28,10 @@ mongoose.connect(process.env.MONGODB_URL, () => {
 // api routes starts here
 
 app.post('/signup', async (req, res) => {
-    const { name, phone, email, password, role } = req.body;
+    const { fname,lname, phone, email, password, role } = req.body;
 
 
-    if(!validator.isAlpha(name))
+    if(!validator.isAlpha(fname) || !validator.isAlpha(lname))
     {
         return res.json({
             success: false,
@@ -69,7 +70,8 @@ app.post('/signup', async (req, res) => {
     // validation to check if all fields are filled starts here
     const emptyFields = [];
 
-    if (!name) emptyFields.push('name');
+    if (!fname) emptyFields.push('fname');
+    if (!lname) emptyFields.push('lname');
     if (!phone) emptyFields.push('phone');
     if (!email) emptyFields.push('email');
     if (!password) emptyFields.push('password');
@@ -104,7 +106,8 @@ app.post('/signup', async (req, res) => {
     // validation to check if phone already exists ends here
 
     const user = new User({
-        name: name,
+        fname: fname,
+        lname: lname,
         phone: phone,
         email: email,
         password: password,
@@ -188,6 +191,60 @@ app.get("/pdflink", async (req, res) => {
         data: pdf
     })
 })
+app.get("/pdfsearch", async(req, res)=>{
+    const {subject} = req.query;
+
+    const pdfItems = await Pdf.find({
+        subject: {$regex: subject, $options: 'i'}
+    })
+
+    res.json({
+        success: true,
+        message: "Data fetched successfully",
+        data: pdfItems
+    })
+})
+app.get("/allItems", async(req, res)=>{
+    const pdfItems = await Pdf.find()
+
+    res.json({
+        success: true,
+        message: "Items fetched successfully",
+        data: pdfItems
+    })
+})
+
+app.post("/createpdf", async(req, res)=>{
+    const {subject,link,date} = req.body;
+   
+    if(!validator.isAlpha(subject) || !validator.isURL(link))
+    {
+        return(
+            res.json({
+                success: false,
+                message: "Pdf created unsuccessfully",
+                
+            })
+        )
+    }
+    
+    
+
+    const pdf = new Pdf({
+        subject : subject,
+        link : link,
+        date: date
+    })
+
+    const savedPdf = await pdf.save();
+
+    res.json({
+        success: true,
+        message: "Pdf created successfully",
+        data: savedPdf
+    })
+})
+
 // api routes ends here
 
 app.use(express.static(path.join(__dirname, '..', 'client', 'build')));

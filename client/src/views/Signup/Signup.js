@@ -3,6 +3,7 @@ import axios from 'axios'
 import swal from 'sweetalert';
 import { currentUser } from './../../util/currentUser.js';
 import "./Signup.css"
+import signupImg from "./../../images/signupImg.svg";
 
 function Signup() {
   const [fname, setFname] = useState('')
@@ -59,14 +60,36 @@ function Signup() {
   return (
     <div>
       <div className='row'>
-        <div className='col-md-6'>
+        <div className='col-md-12'>
+        <div class="wrapper">
+  <p class="target">
+   
+        Enter Valid Details To Continue.
+        &nbsp;&nbsp;
+            Password Contains :
+            
+              
+                A-Z
+                a-z
+               0-9
+                One Special Symbol
+
+
+                </p>
+</div>
+         
+       
+        </div>
+      </div>
+      <div className='row'>
+        <div className='col-md-6 main-info-container'>
           <div className='info-container'>
-
-
+          
           </div>
-          <div className='main-container-signup-img m-1'>
-            <div className='container'>
-
+          <br />
+          <div className='main-container-signup-img mt-5 m-1'>
+            <div className='container '>
+            <img src={signupImg} className = "img-fluid signup-img-size"/>
             </div>
 
           </div>

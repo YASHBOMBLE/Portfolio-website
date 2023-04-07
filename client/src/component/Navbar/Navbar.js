@@ -1,6 +1,7 @@
 import React from 'react'
 import { currentUser } from '../../util/currentUser'
 function Navbar() {
+  //45e900a3-67b9-4e6e-b0b9-02d981a6c7da
   return (
     <div>
       <nav class="navbar navbar-expand-lg bg-body-tertiary">

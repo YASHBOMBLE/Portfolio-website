@@ -1,8 +1,8 @@
 import express from 'express';
 import mongoose from 'mongoose';
 import dotenv from 'dotenv';
-
-
+import * as EmailValidator from 'email-validator';
+import validator from 'validator';
 dotenv.config();
 
 import path from 'path';
@@ -29,6 +29,43 @@ mongoose.connect(process.env.MONGODB_URL, () => {
 app.post('/signup', async (req, res) => {
     const { name, phone, email, password, role } = req.body;
 
+
+    if(!validator.isAlpha(name))
+    {
+        return res.json({
+            success: false,
+            message: "Name is in String"
+        })
+    }
+
+    if(!validator.isStrongPassword(password))
+    {
+        return res.json({
+            success: false,
+            message: "Password Contains letters A-Z a-z 0-9 or Special Symbol (minLength: 8, minLowercase: 1, minUppercase: 1, minNumbers: 1, minSymbols: 1)"
+        })
+    }
+    if (!EmailValidator.validate(email)) {
+        return res.json({
+            success: false,
+            message: "Enter Valid Email"
+        })
+    }
+    
+
+    if(validator.isAlpha(phone))
+    {
+        return res.json({
+            success: false,
+            message: "Mobile number Must be in Digit"
+        })
+    }
+    if (phone.length < 10 || phone.length >= 11) {
+        return res.json({
+            success: false,
+            message: "Mobile No Must be 10 Digit"
+        })
+    }
     // validation to check if all fields are filled starts here
     const emptyFields = [];
 
@@ -86,7 +123,23 @@ app.post('/signup', async (req, res) => {
 app.post('/login', async (req, res) => {
     const { email, password } = req.body;
 
-    if(!email || !password) {
+
+    if (!EmailValidator.validate(email)) {
+        return res.json({
+            success: false,
+            message: "Enter Valid Email"
+        })
+    }
+
+    if(!validator.isStrongPassword(password))
+    {
+        return res.json({
+            success: false,
+            message: "Enter Valid Password"
+        })
+    }
+
+    if (!email || !password) {
         return res.json({
             success: false,
             message: "Email and password are required"
@@ -95,27 +148,26 @@ app.post('/login', async (req, res) => {
 
     const existingUser = await User.findOne({ email: email, password: password });
 
-    if(existingUser){
+    if (existingUser) {
         return res.json({
             success: true,
             message: "Login successful",
             data: existingUser
         })
     }
-    else
-    {
+    else {
         return res.json({
             success: false,
             message: "Invalid email or password"
         })
     }
 })
-app.post('/pdfentry',async(req,res)=>{
-    const { subject,link } = req.body;
+app.post('/pdfentry', async (req, res) => {
+    const { subject, link } = req.body;
 
     const pdf = new Pdf({
         subject: subject,
-        link : link
+        link: link
     })
 
     const savedPdf = await pdf.save();
@@ -127,7 +179,7 @@ app.post('/pdfentry',async(req,res)=>{
     })
 })
 
-app.get("/pdflink", async(req, res)=>{
+app.get("/pdflink", async (req, res) => {
     const pdf = await Pdf.find()
 
     res.json({
@@ -140,9 +192,9 @@ app.get("/pdflink", async(req, res)=>{
 
 app.use(express.static(path.join(__dirname, '..', 'client', 'build')));
 
-  app.get('*', (req, res) => {
+app.get('*', (req, res) => {
     res.sendFile(path.join(__dirname, '..', 'client', 'build', 'index.html'))
-  });
+});
 
 
 

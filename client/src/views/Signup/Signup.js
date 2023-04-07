@@ -5,69 +5,78 @@ import { currentUser } from './../../util/currentUser.js';
 import "./Signup.css"
 
 function Signup() {
-    const [name, setName] = useState('')
-    const [email, setEmail] = useState('')
-    const [phone, setPhone] = useState('')
-    const [password, setPassword] = useState('')
-    const [role, setRole] = useState('user')
-    async function signupUser() {
-      const response = await axios.post('/signup', {
-        name: name,
-        email: email,
-        phone: phone,
-        password: password,
-        role: role
-      })
-      console.log(response.data)
-      if (response.data.success) {
-        await swal({
-          title: "Success",
-          text: response.data.message,
-          icon: "success",
-          button: "Aww yiss!",
-        });
-        window.location.href = '/login'
-      }
-      else {
-        swal({
-          title: "Error",
-          text: response.data.message,
-          icon: "error",
-          button: "Try Again!",
-        });
-        setName('')
-        setEmail('')
-        setPhone('')
-        setPassword('')
-      }
+  const [name, setName] = useState('')
+  const [email, setEmail] = useState('')
+  const [phone, setPhone] = useState('')
+  const [password, setPassword] = useState('')
+  const [role, setRole] = useState('user')
+
+
+   
+      
+
+
+  async function signupUser() {
+   
+    const response = await axios.post('/signup', {
+      name: name,
+      email: email,
+      phone: phone,
+      password: password,
+      role: role
+    })
+    console.log(response.data)
+    if (response.data.success) {
+      await swal({
+        title: "Success",
+        text: response.data.message,
+        icon: "success",
+        button: "Aww yiss!",
+      });
+      window.location.href = '/login'
     }
-  
+    else {
+      swal({
+        title: "Error",
+        text: response.data.message,
+        icon: "error",
+        button: "Try Again!",
+      });
+      setName('')
+      setEmail('')
+      setPhone('')
+      setPassword('')
+    }
+  }
+
+
+
 
   return (
     <div>
       <div className='row'>
         <div className='col-md-6'>
-        <div className='info-container'>
-     
-        
-        </div>
-     <div className='main-container-signup-img m-1'>
-      <div className='container'>
-     
-      </div>
-      
-      </div>
-          
-     
-       
-   
+          <div className='info-container'>
+
+
+          </div>
+          <div className='main-container-signup-img m-1'>
+            <div className='container'>
+
+            </div>
+
+          </div>
+
+
+
+
         </div>
 
         <div className='col-md-6'>
           <div className='form-container'>
-        
+
             <div className='form-title'>
-            Signup
+              Signup
             </div>
             <hr />
             <form>
@@ -96,10 +105,11 @@ function Signup() {
               </div>
 
               <div>
-                <button type='button' className='signup-button' onClick={signupUser}>Signup</button>
+                <button type='button' className='signup-button' onClick={signupUser }>Signup</button>
+
               </div>
             </form>
-           
+
           </div>
         </div>
       </div>

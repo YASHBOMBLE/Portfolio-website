@@ -4,7 +4,8 @@ import swal from 'sweetalert';
 import { currentUser } from './../../util/currentUser.js';
 import "./Signup.css"
 import signupImg from "./../../images/signupImg.svg";
-
+import Footer from "./../../component/Footer/Footer.js"
+import { Link } from 'react-router-dom'
 function Signup() {
   const [fname, setFname] = useState('')
   const [lname, setLname] = useState('')
@@ -140,11 +141,16 @@ function Signup() {
                 <button type='button' className='signup-button' onClick={signupUser }>Signup</button>
 
               </div>
+              <hr />
+              <span className=' login-link'>
+                    <Link to='/login' className='' >Already have an account Login</Link>
+                  </span>
             </form>
 
           </div>
         </div>
       </div>
+      <Footer />
     </div>
   )
 }

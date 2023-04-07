@@ -5,6 +5,7 @@ import swal from 'sweetalert';
 import { currentUser } from './../../util/currentUser'
 import "./Login.css"
 import { Link } from 'react-router-dom'
+import Footer from '../../component/Footer/Footer';
 
 function Login() {
   const [email, setEmail] = useState('')
@@ -83,6 +84,9 @@ function Login() {
         </div>
 
       </div>
+      <br />
+      <br />
+      <Footer />
     </div>
   )
 }

@@ -217,7 +217,7 @@ app.get("/allItems", async(req, res)=>{
 app.post("/createpdf", async(req, res)=>{
     const {subject,link,date} = req.body;
    
-    if(!validator.isAlpha(subject) || !validator.isURL(link))
+    if(!validator.isURL(link))
     {
         return(
             res.json({

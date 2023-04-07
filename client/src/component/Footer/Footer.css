@@ -1,3 +1,18 @@
 .footer-container{
     text-align: center;
 }
+a{
+    text-decoration : none;
+    color: blueviolet;
+    font-weight: bold;
+    letter-spacing: 2px;
+}
+a:hover{
+    color: black;
+    transition: 1s;
+    cursor: pointer;
+
+}
+.Dev-name{
+    opacity: 9%;
+}

@@ -90,12 +90,14 @@ body{
   
   
   .wrapper {
-    width: 100%;
+   width: 100%;
     margin: auto;
     border: 2px solid #eb1c49;
     border-radius: 8px;
-    overflow-x: hidden;
+    overflow: hidden;
     padding: 7px;
+    line-break: none;
+
   }
   
   .target {

@@ -27,6 +27,8 @@ mongoose.connect(process.env.MONGODB_URL, () => {
 
 // api routes starts here
 
+
+
 app.post('/signup', async (req, res) => {
     const { fname,lname, phone, email, password, role } = req.body;
 

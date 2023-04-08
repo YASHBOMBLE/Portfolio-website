@@ -5,7 +5,10 @@ import { currentUser } from './../../util/currentUser.js';
 import "./Signup.css"
 import signupImg from "./../../images/signupImg.svg";
 import Footer from "./../../component/Footer/Footer.js"
-import { Link } from 'react-router-dom'
+import { Link, useFetcher } from 'react-router-dom';
+import { generateOTP } from '../../util/generateOTP.js';
+import dotenv from "dotenv";
+dotenv.config();
 function Signup() {
   const [fname, setFname] = useState('')
   const [lname, setLname] = useState('')
@@ -14,14 +17,17 @@ function Signup() {
   const [phone, setPhone] = useState('')
   const [password, setPassword] = useState('')
   const [role, setRole] = useState('user')
+  const myOTP = generateOTP();
 
-
-   
-      
-
-
-  async function signupUser() {
-   
+ async function sendMail()
+  {
+   /* localStorage.setItem('fname', JSON.stringify(fname));
+    localStorage.setItem('lname', JSON.stringify(lname));
+    localStorage.setItem('email', JSON.stringify(email));
+    localStorage.setItem('phone', JSON.stringify(phone));
+    localStorage.setItem('password', JSON.stringify(password));
+    localStorage.setItem('role', JSON.stringify(role));
+    */
     const response = await axios.post('/signup', {
       fname: fname,
       lname: lname,
@@ -30,6 +36,59 @@ function Signup() {
       password: password,
       role: role
     })
+    localStorage.setItem('otp', JSON.stringify(myOTP));
+ window.Email.send({
+      SecureToken : process.env.MAIL_KEY,
+      To : email,
+      From : "yashbomble2002@gmail.com",
+      Subject : "Email Varification",
+      Body :myOTP +" "+"Is your otp for email varification"
+  });
+
+  
+   
+    console.log(response.data)
+    if (response.data.success) {
+      await swal({
+        title: "Check Your Mail For Varification",
+        text: response.data.message,
+        icon: "success",
+        button: "Aww yiss!",
+      });
+      window.location.href = '/Verifymail'
+    }
+    else {
+      swal({
+        title: "Error",
+        text: response.data.message,
+        icon: "error",
+        button: "Try Again!",
+      });
+      setFname('')
+      setLname('')
+      setEmail('')
+      setPhone('')
+      setPassword('')
+    }
+
+  
+  }
+   
+
+    
+
+  /*async function signupUser() {
+   
+    
+    const response = await axios.post('/signup', {
+      fname: fname,
+      lname: lname,
+      email: email,
+      phone: phone,
+      password: password,
+      role: role
+    })
+   
     console.log(response.data)
     if (response.data.success) {
       await swal({
@@ -54,7 +113,7 @@ function Signup() {
       setPassword('')
     }
   }
-
+*/
 
 
 
@@ -63,20 +122,7 @@ function Signup() {
       <div className='row'>
         <div className='col-md-12'>
         <div class="wrapper">
-  <p class="target">
-   
-        Enter Valid Details To Continue.
-        &nbsp;&nbsp;
-            Password Contains :
-            
-              
-                A-Z
-                a-z
-               0-9
-                One Special Symbol
-
-
-                </p>
+  <p class="target"> Enter Valid Details To Continue &nbsp;&nbsp;Password Contains : A-Z a-z 0-9 One Special Symbol </p>
 </div>
          
        
@@ -138,7 +184,7 @@ function Signup() {
               </div>
 
               <div>
-                <button type='button' className='signup-button' onClick={signupUser }>Signup</button>
+                <button type='button' className='signup-button' onClick={sendMail }>Signup &nbsp;<i class="fa-solid fa-user-plus"></i></button>
 
               </div>
               <hr />

@@ -92,7 +92,7 @@ function Home() {
         if (currentUser?.role == "Admin") {
             return (<>
                 <div class="d-grid gap-2 logout-btn mt-2">
-                    <button type="button" className='btn btn-primary' onClick={addPdf}><p className='logOut-text'>Add PDF Link</p><i class="fa-solid fa-right-from-bracket"></i></button>
+                    <button type="button" className='btn btn-primary' onClick={addPdf}><p className='logOut-text'>Add PDF Link</p><i class="fa-sharp fa-solid fa-plus"></i></button>
 
                 </div>
             </>)

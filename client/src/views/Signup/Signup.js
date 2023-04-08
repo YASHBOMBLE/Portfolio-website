@@ -123,7 +123,7 @@ function Signup() {
       <div className='row'>
         <div className='col-md-12'>
           <div class="wrapper">
-            <p class="target">{process.env.REACT_APP_MAIL_KEY}Enter Valid Details To Continue &nbsp;&nbsp;Password Contains : A-Z a-z 0-9 One Special Symbol </p>
+            <p class="target">Enter Valid Details To Continue &nbsp;&nbsp;Password Contains : A-Z a-z 0-9 One Special Symbol </p>
           </div>
 
         

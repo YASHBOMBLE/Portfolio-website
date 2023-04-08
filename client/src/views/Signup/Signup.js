@@ -50,9 +50,9 @@ function Signup() {
       if (response.data.success) {
         await swal({
           title: "Check Your Mail For Varification",
-          text: response.data.message,
+          text: "Varify Mail",
           icon: "success",
-          button: "Aww yiss!",
+          button: "Continue",
         });
         window.location.href = '/Verifymail'
       }

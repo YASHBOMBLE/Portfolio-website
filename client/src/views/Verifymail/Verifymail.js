@@ -3,6 +3,7 @@ import { generateOTP } from '../../util/generateOTP';
 import "./Verifymail.css";
 import swal from 'sweetalert';
 import Footer from '../../component/Footer/Footer';
+import { currentUser } from '../../util/currentUser';
 function Verifymail() {
     const [otp, setOtp] = useState('');
     const myOTP = JSON.parse(localStorage.getItem('otp'));
@@ -35,8 +36,18 @@ function Verifymail() {
 
         else {
             if (myOTP == otp1) {
+                await swal({
+                    title: "Registration Successful",
+                    text: "Login To continue",
+                    icon: "success",
+                    button: "Login",
+                  });
+
+                 
+
                 window.location.href = "/login";
                 localStorage.removeItem('otp')
+
 
             }
             else {
@@ -50,6 +61,8 @@ function Verifymail() {
 
             }
         }
+
+
     }
 
 

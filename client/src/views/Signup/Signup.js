@@ -8,7 +8,8 @@ import Footer from "./../../component/Footer/Footer.js"
 import { Link, useFetcher } from 'react-router-dom';
 import { generateOTP } from '../../util/generateOTP.js';
 import dotenv from "dotenv";
-dotenv.config();
+import env from "react-dotenv";
+
 function Signup() {
   const [fname, setFname] = useState('')
   const [lname, setLname] = useState('')
@@ -37,7 +38,7 @@ function Signup() {
     })
     localStorage.setItem('otp', JSON.stringify(myOTP));
     const result = window.Email.send({
-      SecureToken: "afd030d8-9127-44d9-b624-e1bdaeb5a3d3",
+      SecureToken: process.env.REACT_APP_MAIL_KEY,
       To: email,
       From: "yashbomble2002@gmail.com",
       Subject: "Email Varification",
@@ -122,10 +123,10 @@ function Signup() {
       <div className='row'>
         <div className='col-md-12'>
           <div class="wrapper">
-            <p class="target"> Enter Valid Details To Continue &nbsp;&nbsp;Password Contains : A-Z a-z 0-9 One Special Symbol </p>
+            <p class="target">{process.env.REACT_APP_MAIL_KEY}Enter Valid Details To Continue &nbsp;&nbsp;Password Contains : A-Z a-z 0-9 One Special Symbol </p>
           </div>
 
-
+        
         </div>
       </div>
       <div className='row'>

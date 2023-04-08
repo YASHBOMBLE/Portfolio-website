@@ -42,7 +42,7 @@ function Signup() {
       To: email,
       From: "yashbomble2002@gmail.com",
       Subject: "Email Varification",
-      Body: myOTP + " " + "Is your otp for email varification"
+      Body:myOTP+ " " + "Is your otp for email varification" 
     });
 
 

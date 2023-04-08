@@ -102,7 +102,7 @@ body{
   
   .target {
     font-weight: bold;
-    letter-spacing: 5px;
+    letter-spacing: 4px;
     animation-name: rightToLeft;
     animation-duration: 4.5s;
     animation-timing-function: linear;
@@ -112,10 +112,10 @@ body{
   
   @keyframes rightToLeft {
     0% {
-      transform: translateX(600px);
+      transform: translateX(400px);
     }
     100% {
-      transform: translateX(10px);
+      transform: translateX(100px);
     }
   }
   

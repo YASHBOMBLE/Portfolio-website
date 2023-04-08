@@ -4,6 +4,7 @@ import "./Verifymail.css";
 import swal from 'sweetalert';
 import Footer from '../../component/Footer/Footer';
 import { currentUser } from '../../util/currentUser';
+import { Link } from 'react-router-dom';
 function Verifymail() {
     const [otp, setOtp] = useState('');
     const myOTP = JSON.parse(localStorage.getItem('otp'));
@@ -78,6 +79,14 @@ function Verifymail() {
 
 </div>
 <hr />
+<div className='row'>
+    <div className='col-md-12'>
+    <div class= "wrapper box">
+            <p class="target"> Any case otp not Received then signup Again <Link to="/signup">signup Again </Link> or contact developer   </p>
+          </div>
+    </div>
+
+</div>
             <div className='row'>
                 <div className='col-md-4'>
 

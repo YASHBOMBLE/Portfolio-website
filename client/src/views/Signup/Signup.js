@@ -19,15 +19,14 @@ function Signup() {
   const [role, setRole] = useState('user')
   const myOTP = generateOTP();
 
- async function sendMail()
-  {
-   /* localStorage.setItem('fname', JSON.stringify(fname));
-    localStorage.setItem('lname', JSON.stringify(lname));
-    localStorage.setItem('email', JSON.stringify(email));
-    localStorage.setItem('phone', JSON.stringify(phone));
-    localStorage.setItem('password', JSON.stringify(password));
-    localStorage.setItem('role', JSON.stringify(role));
-    */
+  async function sendMail() {
+    /* localStorage.setItem('fname', JSON.stringify(fname));
+     localStorage.setItem('lname', JSON.stringify(lname));
+     localStorage.setItem('email', JSON.stringify(email));
+     localStorage.setItem('phone', JSON.stringify(phone));
+     localStorage.setItem('password', JSON.stringify(password));
+     localStorage.setItem('role', JSON.stringify(role));
+     */
     const response = await axios.post('/signup', {
       fname: fname,
       lname: lname,
@@ -37,45 +36,46 @@ function Signup() {
       role: role
     })
     localStorage.setItem('otp', JSON.stringify(myOTP));
- window.Email.send({
-      SecureToken : process.env.MAIL_KEY,
-      To : email,
-      From : "yashbomble2002@gmail.com",
-      Subject : "Email Varification",
-      Body :myOTP +" "+"Is your otp for email varification"
-  });
+    const result = window.Email.send({
+      SecureToken: "afd030d8-9127-44d9-b624-e1bdaeb5a3d3",
+      To: email,
+      From: "yashbomble2002@gmail.com",
+      Subject: "Email Varification",
+      Body: myOTP + " " + "Is your otp for email varification"
+    });
 
-  
-   
-    console.log(response.data)
-    if (response.data.success) {
-      await swal({
-        title: "Check Your Mail For Varification",
-        text: response.data.message,
-        icon: "success",
-        button: "Aww yiss!",
-      });
-      window.location.href = '/Verifymail'
-    }
-    else {
-      swal({
-        title: "Error",
-        text: response.data.message,
-        icon: "error",
-        button: "Try Again!",
-      });
-      setFname('')
-      setLname('')
-      setEmail('')
-      setPhone('')
-      setPassword('')
+
+    if (result) {
+      console.log(response.data)
+      if (response.data.success) {
+        await swal({
+          title: "Check Your Mail For Varification",
+          text: response.data.message,
+          icon: "success",
+          button: "Aww yiss!",
+        });
+        window.location.href = '/Verifymail'
+      }
+      else {
+        swal({
+          title: "Error",
+          text: response.data.message,
+          icon: "error",
+          button: "Try Again!",
+        });
+
+        setFname('')
+        setLname('')
+        setEmail('')
+        setPhone('')
+        setPassword('')
+      }
     }
 
-  
   }
-   
 
-    
+
+
 
   /*async function signupUser() {
    
@@ -121,22 +121,22 @@ function Signup() {
     <div>
       <div className='row'>
         <div className='col-md-12'>
-        <div class="wrapper">
-  <p class="target"> Enter Valid Details To Continue &nbsp;&nbsp;Password Contains : A-Z a-z 0-9 One Special Symbol </p>
-</div>
-         
-       
+          <div class="wrapper">
+            <p class="target"> Enter Valid Details To Continue &nbsp;&nbsp;Password Contains : A-Z a-z 0-9 One Special Symbol </p>
+          </div>
+
+
         </div>
       </div>
       <div className='row'>
         <div className='col-md-6 main-info-container'>
           <div className='info-container'>
-          
+
           </div>
           <br />
           <div className='main-container-signup-img mt-5 m-1'>
             <div className='container '>
-            <img src={signupImg} className = "img-fluid signup-img-size"/>
+              <img src={signupImg} className="img-fluid signup-img-size" />
             </div>
 
           </div>
@@ -184,13 +184,13 @@ function Signup() {
               </div>
 
               <div>
-                <button type='button' className='signup-button' onClick={sendMail }>Signup &nbsp;<i class="fa-solid fa-user-plus"></i></button>
+                <button type='button' className='signup-button' onClick={sendMail}>Signup &nbsp;<i class="fa-solid fa-user-plus"></i></button>
 
               </div>
               <hr />
               <span className=' login-link'>
-                    <Link to='/login' className='' >Already have an account Login</Link>
-                  </span>
+                <Link to='/login' className='' >Already have an account Login</Link>
+              </span>
             </form>
 
           </div>

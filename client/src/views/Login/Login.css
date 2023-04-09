@@ -12,3 +12,9 @@
     padding-right: 20px;
     letter-spacing: 2px;
 }
+.login-page-text{
+   text-align: center;
+    font-family: monospace;
+    letter-spacing: 4px;
+    margin-top: 4px;
+}

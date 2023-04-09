@@ -170,7 +170,7 @@ function Home() {
                                                 {Item.subject}</td>
                                             <td><div className='text-center'>
                                                 <a target='_blank' href={Item.link}>
-                                                    <button type="button" class="btn-resume btn-sm "><b><i class="far fa-file-alt"><i class="fa-solid fa-arrow-down-to-line"></i></i> Download</b></button>
+                                                    <button type="button" class=" btn-sm "><b><i class="far fa-file-alt"><i class="fa-solid fa-arrow-down-to-line"></i></i> Download</b></button>
                                                 </a>
                                             </div></td>
 <td  className='text-center'>{Item.date}</td>

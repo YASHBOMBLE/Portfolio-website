@@ -27,12 +27,10 @@ mongoose.connect(process.env.MONGODB_URL, () => {
 
 // api routes starts here
 
-
-
-app.post('/signup', async (req, res) => {
+//API for Signup Form Validation
+app.get('/validate',async(req,res)=>{
     const { fname,lname, phone, email, password, role } = req.body;
-
-
+//Name VAlidation
     if(!validator.isAlpha(fname) || !validator.isAlpha(lname))
     {
         return res.json({
@@ -40,6 +38,10 @@ app.post('/signup', async (req, res) => {
             message: "Name is in String"
         })
     }
+   
+    
+    
+    //password validation
 
     if(!validator.isStrongPassword(password))
     {
@@ -48,6 +50,8 @@ app.post('/signup', async (req, res) => {
             message: "Password Contains letters A-Z a-z 0-9 or Special Symbol (minLength: 8, minLowercase: 1, minUppercase: 1, minNumbers: 1, minSymbols: 1)"
         })
     }
+    
+    //Email validation
     if (!EmailValidator.validate(email)) {
         return res.json({
             success: false,
@@ -55,7 +59,8 @@ app.post('/signup', async (req, res) => {
         })
     }
     
-
+    
+//Phone number Validation
     if(validator.isAlpha(phone))
     {
         return res.json({
@@ -63,12 +68,26 @@ app.post('/signup', async (req, res) => {
             message: "Mobile number Must be in Digit"
         })
     }
+   
+
     if (phone.length < 10 || phone.length >= 11) {
         return res.json({
             success: false,
             message: "Mobile No Must be 10 Digit"
         })
     }
+
+    res.json({
+        success: true,
+        message: "User created successfully"
+    })
+})
+
+app.post('/signup', async (req, res) => {
+    const { fname,lname, phone, email, password, role } = req.body;
+
+
+   
     // validation to check if all fields are filled starts here
     const emptyFields = [];
 

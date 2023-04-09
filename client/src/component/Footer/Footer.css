@@ -13,8 +13,12 @@ a:hover{
     cursor: pointer;
 
 }
+.Dev-name{
+    opacity: 70%;
+}
 .Dev-name:hover{
+
     cursor: pointer;
     transition: 1s;
-   color: rgb(110, 105, 105);
+   color: rgb(152, 141, 141);
 }

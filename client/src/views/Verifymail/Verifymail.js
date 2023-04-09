@@ -6,6 +6,7 @@ import Footer from '../../component/Footer/Footer';
 
 import { Link } from 'react-router-dom';
 import axios from 'axios';
+import Marquee from 'react-fast-marquee';
 function Verifymail() {
     const [otp, setOtp] = useState('');
     const myOTP = JSON.parse(localStorage.getItem('otp'));
@@ -118,9 +119,9 @@ useEffect(()=>{
             <hr />
             <div className='row'>
                 <div className='col-md-12'>
-                    <div class="wrapper box">
-                        <p class="target"> In Any case otp not Received then signup Again <Link to="/signup">signup Again </Link> or contact developer | Also Cheack Your Spam Folder   </p>
-                    </div>
+                    
+                    <Marquee speed={52} text="swetha" className='marquee-text text-center'><p class="marquee-tag-text"> In Any case otp not Received then signup Again <Link to="/signup">signup Again </Link> or contact developer | Also Cheack Your Spam Folder   </p></Marquee>
+                    
                 </div>
 
             </div>

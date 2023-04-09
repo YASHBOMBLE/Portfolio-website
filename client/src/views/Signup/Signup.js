@@ -128,8 +128,12 @@ function Signup() {
 
 
   return (
-    <div>
-    
+    <div> 
+       
+             <br></br>
+             <Marquee text="swetha" className='marquee-text'>Test</Marquee>
+             
+            
       <div className='row'>
         <div className='col-md-12'>
           <div class="wrapper">

@@ -144,41 +144,7 @@ app.post('/signup', async (req, res) => {
     })
 })
 
-app.post('/forgetPassword',async(req,res)=>{
-    const {email,password} = req.body
 
-    const existingUser = await User.findOne({ email: email });
-if(existingUser){
-   /* const update = await User.updateOne({password : existingUser.password},{$setpassword: password})
-    if 
-    (update){
-    return res.json({
-        success : true,
-        message : "success",
-        data : existingUser
-        })
-        }
-        else{
-            return res.json({
-                success : false,
-                message : "Error"
-            })
-        }
-        */
-        res.json({
-            success : true,
-            message : "success",
-            data : existingUser.password
-            })
-}
-else{
-    return res.json({
-        success : false,
-        message : "User Not Found"
-    })
-}
-    
-})
 
 app.post('/login', async (req, res) => {
     const { email, password } = req.body;

@@ -131,15 +131,12 @@ function Signup() {
     <div> 
        
              <br></br>
-             <Marquee text="swetha" className='marquee-text'>Test</Marquee>
+            
              
             
       <div className='row'>
-        <div className='col-md-12'>
-          <div class="wrapper">
-           <p class="target">Enter Valid Details To Continue &nbsp;&nbsp;Password Contains : A-Z a-z 0-9 One Special Symbol </p> 
-          </div>
- 
+        <div className=' text-center col-md-12'>
+        <Marquee speed={52} text="swetha" className='marquee-text text-center'><p class="marquee-tag-text">Enter Valid Details To Continue &nbsp;&nbsp;Password Contains : A-Z a-z 0-9 One Special Symbol </p> </Marquee>
         </div>
       </div>
       <div className='row'>

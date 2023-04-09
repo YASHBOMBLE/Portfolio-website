@@ -29,7 +29,7 @@ body{
     height: 40px;
     border-top: none;
     border-left: none;
-    
+    letter-spacing: 4px;
     border-right: none;
     margin: 10px;
   }
@@ -102,7 +102,7 @@ body{
   
   .target {
     font-weight: bold;
-    letter-spacing: 4px;
+    letter-spacing: 3px;
     animation-name: rightToLeft;
     animation-duration: 4.5s;
     animation-timing-function: linear;
@@ -112,10 +112,46 @@ body{
   
   @keyframes rightToLeft {
     0% {
-      transform: translateX(400px);
+      transform: translateX(600px);
     }
-    100% {
-      transform: translateX(100px);
+    300% {
+      transform: translateX(10px);
     }
   }
+  .pass-lable{
+    position:absolute;
+    bottom: 60px;
+    left: 55%;
+    font-size: 15px;
+  }
+  .input-container {
+    position: relative;
+    display: inline-block;
+  }
   
+  .input-container input[type="password"] {
+    padding-right: 30px;
+  }
+  
+  .input-container i {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+  }
+  
+  .input-container i.fa-eye-slash {
+    display: none;
+  }
+  .text-pass{
+    font-style: normal;
+    font-weight: bold;
+    color: rgb(32, 31, 31);
+  }
+  .marquee-tag{
+    height: 30px;
+  }
+  .marquee-text{
+    color: white;
+  }

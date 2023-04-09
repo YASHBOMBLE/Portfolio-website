@@ -3,13 +3,15 @@ import axios from 'axios'
 import swal from 'sweetalert';
 import { currentUser } from './../../util/currentUser.js';
 import "./Signup.css"
-import signupImg from "./../../images/signupImg.svg";
+
 import Footer from "./../../component/Footer/Footer.js"
 import { Link, useFetcher } from 'react-router-dom';
 import { generateOTP } from '../../util/generateOTP.js';
-
+import Marquee from "react-fast-marquee";
 
 function Signup() {
+
+
   const [fname, setFname] = useState('')
   const [lname, setLname] = useState('')
 
@@ -18,8 +20,10 @@ function Signup() {
   const [password, setPassword] = useState('')
   const [role, setRole] = useState('user')
   const myOTP = generateOTP();
-
-
+  const [show, setShow] = useState(false)
+  const handleShow = () => {
+    setShow(!show)
+  }
 
   async function sendMail() {
     localStorage.setItem('fname', JSON.stringify(fname));
@@ -58,7 +62,9 @@ function Signup() {
           icon: "success",
           button: "Continue",
         });
+
         window.location.href = '/Verifymail'
+
       }
       else {
         swal({
@@ -123,13 +129,13 @@ function Signup() {
 
   return (
     <div>
+    
       <div className='row'>
         <div className='col-md-12'>
           <div class="wrapper">
-            <p class="target">Enter Valid Details To Continue &nbsp;&nbsp;Password Contains : A-Z a-z 0-9 One Special Symbol </p>
+           <p class="target">Enter Valid Details To Continue &nbsp;&nbsp;Password Contains : A-Z a-z 0-9 One Special Symbol </p> 
           </div>
-
-
+ 
         </div>
       </div>
       <div className='row'>
@@ -170,10 +176,21 @@ function Signup() {
               </div>
 
               <div>
-                <label htmlFor='password'>Password: </label>
-                <input type='password' id='password' placeholder=' Password' className='user-input'
-                  value={password} onChange={(e) => setPassword(e.target.value)} />
+
+
+
+
+
+                <label for="password">Password:</label>
+                <div class="input-container">
+                  <input type={show ? "text" : "password"} value={password} onChange={(e) => setPassword(e.target.value)} className='user-input' placeholder=' Password' id="password" name="password" />
+                  <i class="btn text-pass" onClick={handleShow}>{show ? "Hide" : "Show"}</i>
+                </div>
+
+             
               </div>
+
+
 
               <div>
                 <button type='button' className='signup-button' onClick={sendMail}>Signup &nbsp;<i class="fa-solid fa-user-plus"></i></button>

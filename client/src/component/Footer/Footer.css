@@ -14,11 +14,12 @@ a:hover{
 
 }
 .Dev-name{
-    opacity: 70%;
+    opacity: 60%;
+    color: bisque;
 }
 .Dev-name:hover{
 
     cursor: pointer;
     transition: 1s;
-   color: rgb(152, 141, 141);
+   color: black;
 }

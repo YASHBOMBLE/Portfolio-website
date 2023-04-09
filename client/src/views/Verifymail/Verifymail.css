@@ -16,13 +16,17 @@
 }
 .otp-input{
     text-align: center;
-    word-spacing: 13px;
+    
     border-top: none;
     border-left: none;
     border-right: none;
-    box-shadow: 0px 0px 3px #808088;    
+    border-bottom: none;
+        
     margin: 4px;
     height: 35px;
+    font-weight: bold;
+    font-size: 16px;
+    letter-spacing: 8px;
 }
 .otp-input:focus{
     outline: none;
@@ -65,6 +69,7 @@
      }
    }
    .box{
+   
     border: none;
     letter-spacing: 2px;
    }

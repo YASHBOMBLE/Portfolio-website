@@ -28,7 +28,7 @@ mongoose.connect(process.env.MONGODB_URL, () => {
 // api routes starts here
 
 //API for Signup Form Validation
-app.get('/validate',async(req,res)=>{
+app.post('/validate',async(req,res)=>{
     const { fname,lname, phone, email, password, role } = req.body;
 //Name VAlidation
     if(!validator.isAlpha(fname) || !validator.isAlpha(lname))

@@ -119,7 +119,7 @@ useEffect(()=>{
             <div className='row'>
                 <div className='col-md-12'>
                     <div class="wrapper box">
-                        <p class="target"> In Any case otp not Received then signup Again <Link to="/signup">signup Again </Link> or contact developer   </p>
+                        <p class="target"> In Any case otp not Received then signup Again <Link to="/signup">signup Again </Link> or contact developer | Also Cheack Your Spam Folder   </p>
                     </div>
                 </div>
 

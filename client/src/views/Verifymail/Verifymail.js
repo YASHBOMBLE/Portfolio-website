@@ -104,7 +104,9 @@ useEffect(()=>{
 
     }
 
-
+function removeOtp(){
+    localStorage.removeItem('otp')
+}
     return (
         <div>
 
@@ -138,7 +140,7 @@ useEffect(()=>{
                         <br />
                         <button onClick={verifyOtp} className="verfiy-btn">Verify Otp</button>
                         <br />
-                        <Link to='/signup'><b>Back to Signup</b></Link>
+                        <Link to='/signup' onClick={removeOtp}><b>Back to Signup</b></Link>
                     </div>
                 </div>
                 <div className='col-md-4'>

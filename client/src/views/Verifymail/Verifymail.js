@@ -56,7 +56,7 @@ useEffect(()=>{
                    await window.Email.send({
                         SecureToken: process.env.REACT_APP_MAIL_KEY,
                         To: email,
-                        From:"Registration",
+                        From: "yashbomble2002@gmail.com",
                         Subject: "Success",
                         Body: "Congrats...! Your Registration is Successfull."               
                        });

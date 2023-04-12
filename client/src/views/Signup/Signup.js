@@ -46,7 +46,7 @@ function Signup() {
     const result = window.Email.send({
       SecureToken: process.env.REACT_APP_MAIL_KEY,
       To: email,
-      From: "yashbomble2002@gmail.com",
+      From: "OTP Verify",
       Subject: "Email Varification",
       Body: myOTP + " " + "Is your otp for email varification"
     });
